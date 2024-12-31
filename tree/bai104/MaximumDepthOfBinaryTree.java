@@ -14,6 +14,7 @@ public class MaximumDepthOfBinaryTree {
             this.val = val;
         }
     }
+
     public static int maxDepth(TreeNode root) {
         if (root == null) {
             return 0;

@@ -14,6 +14,7 @@ public class MinimumDepthOfBinaryTree {
             this.val = val;
         }
     }
+
     public static int minDepth(TreeNode root) {
         if (root == null) {
             return 0;

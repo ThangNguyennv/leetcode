@@ -1,5 +1,8 @@
 package tree.bai112;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PathSum {
     static class TreeNode {
         int val;
@@ -19,13 +22,27 @@ public class PathSum {
         if (root == null) {
             return false;
         }
-        if (root.left == null && root.right == null) {
+
+        if (root.left == null && root.right == null) { // Node lá
             return root.val == targetSum;
         }
-
         return hasPathSum(root.left, targetSum - root.val)
                 || hasPathSum(root.right, targetSum - root.val);
 
+    }
+
+    public static void preorder(TreeNode root, int targetSum, List<Integer> list) {
+        if (root != null) {
+            list.add(root.val);
+            preorder(root.left, targetSum, list);
+            preorder(root.right, targetSum, list);
+        }
+    }
+
+    public static void printTree(TreeNode root, int targetSum) {
+        List<Integer> list = new ArrayList<>();
+        preorder(root, targetSum, list);
+        System.out.println(list);
     }
 
     public static void main(String[] args) {
@@ -42,5 +59,6 @@ public class PathSum {
         root.right.right.right = new TreeNode(1);
 
         System.out.println(hasPathSum(root, 22));
+//        printTree(root, 22);
     }
 }

@@ -27,13 +27,13 @@ public class BinaryTreeTopSideView {
         }
     }
 
-    public static List<Integer> TopSideView(TreeNode root) {
+    public static List<Integer> topSideView(TreeNode root) {
         List<Integer> result = new ArrayList<>();
         if (root == null) {
             return result;
         }
         // Sử dụng TreeMap để lưu các node theo thứ tự HD (Horizontal Distance)
-        TreeMap<Integer, Integer> topViewMap = new TreeMap<>();
+        Map<Integer, Integer> topViewMap = new TreeMap<>();
 
         // Hàng đợi để duyệt cây
         Queue<Pair> q = new LinkedList<>();
@@ -69,6 +69,6 @@ public class BinaryTreeTopSideView {
         root.left.right = new TreeNode(5);
         root.right.right = new TreeNode(7);
 
-        System.out.println(TopSideView(root));
+        System.out.println(topSideView(root));
     }
 }

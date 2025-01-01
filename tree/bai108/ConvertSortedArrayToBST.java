@@ -34,6 +34,5 @@ public class ConvertSortedArrayToBST {
         root.left = createBST(nums, left, mid - 1);
         root.right = createBST(nums, mid + 1, right);
         return root;
-
     }
 }

@@ -6,16 +6,16 @@ import java.util.Map;
 import java.util.Set;
 
 public class RansomNote {
-    public static int canConstruct(String ransomNote, String magazine) {
-        Map<Character, Integer> map1 = new HashMap<>();
-        Map<Character, Integer> map2 = new HashMap<>();
+    public boolean canConstruct(String ransomNote, String magazine) {
+        Map<Character, Long> map1 = new HashMap<>();
+        Map<Character, Long> map2 = new HashMap<>();
         Set<Character> set = new HashSet<>();
         for (int i = 0; i < ransomNote.length(); i++) {
             char x = ransomNote.charAt(i);
             if (map1.containsKey(x)) {
                 map1.put(x, map1.get(x) + 1);
             } else {
-                map1.put(x, 1);
+                map1.put(x, 1L);
             }
             set.add(x);
         }
@@ -24,11 +24,14 @@ public class RansomNote {
             if (map2.containsKey(x)) {
                 map2.put(x, map2.get(x) + 1);
             } else {
-                map2.put(x, 1);
+                map2.put(x, 1L);
             }
         }
-        int count = 0;
+        Long count = 0L;
 
+        if (map1.size() > map2.size()) {
+            return false;
+        }
         for (int i = 0; i < set.size(); i++) {
             char x = ransomNote.charAt(i);
             if (map1.containsKey(x) && map2.containsKey(x)) {
@@ -37,11 +40,7 @@ public class RansomNote {
                 }
             }
         }
-        return count;
+        return count == map1.size();
     }
 
-    public static void main(String[] args) {
-        System.out.println(canConstruct("bg", "efjbdfbdgfjhhaiigfhbaejahgfbbgbjagbddfgdiaigdadhcfcj"));
-
-    }
 }
